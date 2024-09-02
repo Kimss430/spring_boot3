@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test1.mapper.SchoolMapper">
+	<select id="selectStuList" parameterType="hashmap" resultType="com.example.test1.model.School">
+		SELECT *
+		FROM STU
+		WHERE 1=1
+		<if test="category != '' and category != null">
+			AND CATEGORY = #{category}
+		</if>
+		<if test="searchOption == 'all'">
+			AND (STUNO LIKE '%' || #{keyword} || '%'
+			OR NAME LIKE '%' || #{keyword} || '%')
+		</if>
+		<if test="searchOption == 'stuNo'">
+			AND STUNO LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="searchOption == 'name'">
+			AND NAME LIKE '%' || #{keyword} || '%'
+		</if>
+		ORDER BY CDATETIME DESC, BOARDNO DESC
+		OFFSET #{startIndex} ROWS FETCH FIRST #{outputNumber} ROWS ONLY
+	</select>
+	
+	<select id="selectStuListCnt" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM STU
+		WHERE 1=1
+		<if test="category != '' and category != null">
+			AND CATEGORY = #{category}
+		</if>
+		<if test="searchOption == 'all'">
+			AND (TITLE LIKE '%' || #{keyword} || '%'
+			OR NAME LIKE '%' || #{keyword} || '%')
+		</if>
+		<if test="searchOption == 'title'">
+			AND STUNO LIKE '%' || #{keyword} || '%'
+		</if>
+		<if test="searchOption == 'name'">
+			AND NAME LIKE '%' || #{keyword} || '%'
+		</if>
+	</select>
+	
+	<!--<select id="selectStuInfo" parameterType="hashmap" resultType="com.example.test1.model.School">
+		SELECT *
+		FROM STU
+		WHERE STUNO = #{stuNo}
+	</select>-->
+	
+	<select id="selectStuInfo" parameterType="hashmap" resultType="com.example.test1.model.School">
+		SELECT *
+		FROM STU S
+		INNER JOIN PROFESSOR P ON S.PROFNO = P.PROFNO
+		INNER JOIN DEPARTMENT D ON P.DEPTNO = D.DEPTNO
+		INNER JOIN DEPARTMENT D2 ON D.PART = D2.DEPTNO
+		WHERE STUNO = #{stuNo}
+	</select>
+	
+	
+	
+	
+</mapper>
