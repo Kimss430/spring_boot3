@@ -3,7 +3,6 @@ package com.example.test1.dao;
 import java.util.HashMap;
 import java.util.List;
 
-import com.example.test1.model.Emp;
 import com.example.test1.model.Student;
 
 public interface StudentService {
@@ -14,7 +13,6 @@ public interface StudentService {
 	
 	HashMap<String, Object> searchStu(HashMap<String, Object> map);
 	
-	List<Emp> searchEmp();
 	
 	HashMap<String, Object> searchSubject();
 	

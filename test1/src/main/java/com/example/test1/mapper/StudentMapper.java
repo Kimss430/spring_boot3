@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.test1.model.Emp;
 import com.example.test1.model.Student;
 
 @Mapper
@@ -16,7 +15,7 @@ public interface StudentMapper {
 	
 	Student selectStu(HashMap<String, Object> map);
 	
-	List<Emp> selectEmp();
+	// List<PURCHASE_HISTORY> selectEmp();
 	
 	List<Student> selectSubject();
 	

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.test1.mapper.StudentMapper;
-import com.example.test1.model.Emp;
 import com.example.test1.model.Student;
 
 @Service
@@ -51,11 +50,6 @@ public class StudentServiceImpl implements StudentService{
 		return resultMap;
 	}
 
-	@Override
-	public List<Emp> searchEmp() {
-		// TODO Auto-generated method stub
-		return studentMapper.selectEmp();
-	}
 
 	@Override
 	public HashMap<String, Object> searchSubject() {

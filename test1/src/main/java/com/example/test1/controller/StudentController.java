@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.test1.dao.StudentService;
-import com.example.test1.model.Emp;
 import com.example.test1.model.Student;
 import com.google.gson.Gson;
 
@@ -83,17 +82,6 @@ public class StudentController {
 	}
 	
 	
-	@RequestMapping(value = "/empList.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public String emp(Model model, @RequestParam HashMap<String, Object> map) throws Exception {
-		HashMap<String, Object> resultMap 
-			= new HashMap<String, Object>();
-		
-		List<Emp> list = studentService.searchEmp();
-		resultMap.put("list", list);
-		resultMap.put("result", "success");
-		return new Gson().toJson(resultMap);
-	}
 	
 	@RequestMapping(value = "/sub-list.dox", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
 	@ResponseBody
