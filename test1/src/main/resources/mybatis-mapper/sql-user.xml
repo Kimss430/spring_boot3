@@ -3,11 +3,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.test1.mapper.UserMapper">
-	<select id="selectUserInfo" parameterType="hashmap" resultType="com.example.test1.model.User">
-		SELECT *
-		FROM TBL_USER
-		WHERE USERID = #{userId}
-	</select>
+	
 	
 	<select id="selectUserList" parameterType="hashmap" resultType="com.example.test1.model.User">
 		SELECT *
@@ -41,6 +37,39 @@
 		FROM TBL_USER
 		WHERE USERID = #{userId} AND PWD = #{pwd}
 	</select>
+	
+	<select id="selectUserInfo" parameterType="hashmap" resultType="com.example.test1.model.User">
+		SELECT *
+		FROM TBL_USER
+		WHERE USERID = #{userId}
+	</select>
+	
+	<!-- 아이디 중복 검사 -->
+	<select id="check_id" parameterType="String" resultType="int">
+		SELECT COUNT (*)
+		FROM TBL_USER
+		WHERE USERID = #{userId}
+	</select>
+	
+	<!-- 패스워드 일치확인-->
+	<select id="check_email" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM TBL_USER
+		WHERE PWD = #{pwd}
+	</select>
+	<!-- 이메일 중복 검사 -->
+	<select id="check_email" parameterType="String" resultType="int">
+		SELECT COUNT(*)
+		FROM TBL_USER
+		WHERE EMAIL = #{email}
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="join_member" parameterType="user">
+		INSERT INTO TBL_USER VALUE(#{id}, #{pw}, #{email}, now(), now(), 'false', #{approval_key})
+	</insert>
+	
+	
 </mapper>
 
 
