@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 @Controller
 public class RegisterController {
 
-	@Autowired
 	
 	@RequestMapping("/register.do")
 	public String register(Model model) throws Exception{

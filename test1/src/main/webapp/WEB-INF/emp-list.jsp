@@ -8,10 +8,32 @@
 	<title>첫번째 페이지</title>
 </head>
 <style>
+	table{
+		margin : 10px;
+	}
+	table, tr, th, td{
+		padding : 10px;
+		border : 1px solid black;
+		border-collapse : collapse;
+		text-align : center;
+	}
 </style>
 <body>
 	<div id="app">
-		{{list}}
+		<table>
+			<tr>
+				<th>사번</th>
+				<th>이름</th>
+				<th>직급</th>
+				<th>부서명</th>
+			</tr>
+			<tr v-for="item in list">
+				<td>{{item.empNo}}</td>
+				<td>{{item.eName}}</td>
+				<td>{{item.job}}</td>
+				<td>{{item.deptNo}}</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

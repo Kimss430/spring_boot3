@@ -25,9 +25,10 @@
 </body>
 </html>
 <script>
-    const app = Vue.createApp({
+	const app = Vue.createApp({
         data() {
             return {
+				info : {}
             };
         },
         methods: {
@@ -35,18 +36,20 @@
 				var self = this;
 				var nparmap = {};
 				$.ajax({
-					url:"register.dox",
+					url:"sample-list.dox",
 					dataType:"json",	
 					type : "POST", 
 					data : nparmap,
 					success : function(data) { 
 						console.log(data);
+						self.info = data.list;
 					}
 				});
             },
         },
         mounted() {
 			var self = this;
+			this.fnGetList();
         }
     });
     app.mount('#app');
