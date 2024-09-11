@@ -49,9 +49,6 @@
 				if(self.si == ""){
 					self.guList = [];
 				}
-				if(self.gu == ""){
-					self.dongList = [];
-				}
 				
 				var nparmap = {si : self.si};
 				$.ajax({
@@ -65,11 +62,6 @@
 							self.guList = data.list;
 						} else {
 							self.siList = data.list;
-						}
-						if(self.gu != ""){
-							self.dongList = data.list;
-						} else {
-							self.guList = data.list;
 						}
 					}
 				});

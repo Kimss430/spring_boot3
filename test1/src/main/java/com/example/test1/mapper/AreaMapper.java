@@ -14,6 +14,4 @@ public interface AreaMapper {
 	
 	List<Area> guList(HashMap<String, Object> map);
 	
-	List<Area> dongList(HashMap<String, Object> map);
-	
 }

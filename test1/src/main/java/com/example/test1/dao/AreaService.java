@@ -7,5 +7,4 @@ public interface AreaService {
 
 	HashMap<String, Object> siArea(HashMap<String, Object> map);
 	
-	
 }

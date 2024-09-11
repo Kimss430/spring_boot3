@@ -18,12 +18,5 @@
 		GROUP BY SI, GU
 	</select>
 	
-	<select id="dongList" parameterType="hashMap" resultType="com.example.test1.model.Area">
-		SELECT GU, DONG
-		FROM TBL_AREA
-		WHERE GU = #{gu}
-		GROUP BY GU, DONG
-	</select>
-	
 	
 </mapper>

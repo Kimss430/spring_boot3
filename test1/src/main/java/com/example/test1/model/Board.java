@@ -23,4 +23,7 @@ public class Board {
 	private String commentNo;
 	private String pCommentNo;
 	
+	private String fCdateTime;
+	private String cnt;
+	
 }

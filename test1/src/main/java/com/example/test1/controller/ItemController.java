@@ -36,4 +36,10 @@ public class ItemController {
 		return new Gson().toJson(resultMap);
 	}
 	
+	@RequestMapping("/api1.do") 
+    public String api(Model model) throws Exception{
+
+        return "/api1";
+    }
+	
 }

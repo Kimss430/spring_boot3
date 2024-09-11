@@ -31,15 +31,6 @@ public class AreaServiceImpl implements AreaService{
 				System.out.println("시");
 			};
 			
-			if(!map.get("gu").equals("")) {
-				System.out.println("구");
-				list = areaMapper.dongList(map);
-			} else {
-				System.out.println("동");
-				list = areaMapper.guList(map);
-			};
-			
-			
 			resultMap.put("list", list);
 			resultMap.put("result", "success");
 			

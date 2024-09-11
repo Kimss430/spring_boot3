@@ -11,9 +11,18 @@
 	</select>-->
 
 	<select id="selectBoardList" parameterType="hashmap" resultType="com.example.test1.model.Board">
-		SELECT *
+		SELECT B.*,U.*,NVL(CNT, 0) AS CNT,
+		CASE
+	    WHEN TO_CHAR(B.CDATETIME, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD') THEN TO_CHAR(CDATETIME, 'HH24:MI:SS')
+	    ELSE TO_CHAR(B.CDATETIME, 'YYYY-MM-DD')
+	  	END AS F_CDATETIME	
 		FROM TBL_BOARD B
 		INNER JOIN TBL_USER U ON B.USERID = U.USERID
+		LEFT JOIN (
+    	SELECT BOARDNO, COUNT(BOARDNO) AS CNT
+    	FROM TBL_COMMENT
+    	GROUP BY BOARDNO
+		) C ON B.BOARDNO = C.BOARDNO
 		WHERE 1=1
 		<if test="category != '' and category != null">
 			AND CATEGORY = #{category}
@@ -28,12 +37,10 @@
 		<if test="searchOption == 'name'">
 			AND USERNAME LIKE '%' || #{keyword} || '%'
 		</if>
-		ORDER BY CDATETIME DESC, BOARDNO DESC
+		ORDER BY CDATETIME DESC, B.BOARDNO DESC
 		OFFSET #{startIndex} ROWS FETCH FIRST #{outputNumber} ROWS ONLY
 	</select>
-
 	
-		
 	<select id="selectBoardListCnt" parameterType="hashmap" resultType="int">
 		SELECT COUNT(*) AS CNT
 		FROM TBL_BOARD B

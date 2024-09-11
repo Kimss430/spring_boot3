@@ -92,10 +92,10 @@
 			</tr>
 			<tr v-for="item in list">
 				<td>{{item.boardNo}}</td>
-				<td><a href="#" @click="fnView(item.boardNo)">{{item.title}}</a></td>
+				<td><a href="#" @click="fnView(item.boardNo)">{{item.title}}[{{item.cnt}}]</a></td>
 				<td>{{item.userName}}</td>
 				<td>{{item.hit}}</td>
-				<td>{{item.cdateTime}}</td>
+				<td>{{item.fCdateTime}}</td>
 				<td>
 					<template v-if="sessionEmail == item.email || sessionStatus == 'A'">
 						<button @click="fnRemove(item.boardNo)">삭제</button></td>
