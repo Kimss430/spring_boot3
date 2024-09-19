@@ -98,8 +98,9 @@
 				<td>{{item.fCdateTime}}</td>
 				<td>
 					<template v-if="sessionEmail == item.email || sessionStatus == 'A'">
-						<button @click="fnRemove(item.boardNo)">삭제</button></td>
+						<button @click="fnRemove(item.boardNo)">삭제</button>
 					</template>
+				</td>
 				</tr>	
 		</table>
 		
